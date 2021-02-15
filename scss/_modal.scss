@@ -1,0 +1,54 @@
+@import "colors";
+@import "fonts";
+@import "images";
+@import "navbar";
+@import "buttons";
+@import "mixins";
+@import "positions";
+
+
+$btn-modal-width: 13rem;
+
+.modal__img {
+    width: 100vh !important;
+}
+
+.carousel-size__modal {
+    width: 100vh !important;
+}
+
+.carousel-imagen__modal {
+    width: 100vh !important;
+}
+
+.carousel-control-prev__modal {
+    left: 100px;
+    top: -5rem;
+
+}
+
+.carousel-control-next__modal {
+    right: 100px;
+    top: -5rem;
+
+}
+.svg-size{
+    width: 3rem;
+}
+li{
+   list-style: none;
+}
+.comodidades-icons{
+    display: inline;
+}
+.contenedor-modal{
+    margin-top: 2rem;
+}
+.titulo-modal{
+    margin-bottom: 2rem;
+}
+
+// MODAL BUSQUEDA HTML
+.boton-modal{
+    width: 13rem;
+  }

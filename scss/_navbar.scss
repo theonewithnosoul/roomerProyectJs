@@ -1,0 +1,61 @@
+$navbar-link-color: #968bea;
+$navbar-link-active-color: #6c5ce7;
+$navbar-hover-color:#f6b60e;
+$dropdown-item-color:#6c5ce7;
+$dropdown-item-hover-color:#f6b60e;
+$dropdown-item-text-decoration: none;
+$dropdown-item-background-color: #f8f9fa;
+
+
+$form-control-focus-color: #968bea;
+$form-control-focus-background-color: #fff;
+$form-control-focus-border-color: #6c5ce7;
+$form-control-focus-outline: 0;
+$form-control-focus-box-shadow: 0 0 0 0.2rem #6c5ce7;
+
+$form-control-placeholder-color:#968bea;
+$form-control-border-color:#968bea;
+
+
+/**navbar**/
+.navbar-light .navbar-nav .nav-link {
+  color: $navbar-link-color;
+}
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show > .nav-link {
+  color: $navbar-link-active-color;
+}
+
+.navbar-light .navbar-text a:hover,
+.navbar-light .navbar-text a:focus {
+  color: $navbar-hover-color;
+}
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: $navbar-hover-color;
+}
+.dropdown-item {
+  color: $dropdown-item-color;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: $dropdown-item-hover-color;
+  text-decoration: $dropdown-item-text-decoration;
+  background-color: $dropdown-item-background-color;
+}
+.form-control:focus {
+  color: $form-control-focus-color;
+  background-color: $form-control-focus-background-color;
+  border-color: $form-control-focus-border-color;
+  outline: $form-control-focus-outline;
+  box-shadow: $form-control-focus-box-shadow;
+}
+
+.form-control::placeholder {
+  color: $form-control-placeholder-color;
+}
+.form-control {
+  border-color: $form-control-border-color;
+}
