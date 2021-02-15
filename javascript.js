@@ -67,15 +67,21 @@ function mostrar(Hospedajes) {
 
 		boton.addEventListener('click', () => {
 			var hospedajeJSON = JSON.stringify(hospedaje);
-		
+			
+			localStorage.setItem = hospedajeJSON;
 			localStorage.guardarHospedaje = hospedajeJSON;
+			
 
 			console.log(hospedajeJSON);
+
+		
+
 
 			abrirModal(hospedaje.id);
 		});
 	});
 }
+
 
 
 //Const para modal

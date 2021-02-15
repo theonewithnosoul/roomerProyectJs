@@ -46,6 +46,7 @@ function mostrar(Hospedajes) {
     var boton = document.getElementById("boton-ver-mas".concat(hospedaje.id));
     boton.addEventListener('click', function () {
       var hospedajeJSON = JSON.stringify(hospedaje);
+      localStorage.setItem = hospedajeJSON;
       localStorage.guardarHospedaje = hospedajeJSON;
       console.log(hospedajeJSON);
       abrirModal(hospedaje.id);
