@@ -47,8 +47,6 @@ function mostrar(Hospedajes) {
     boton.addEventListener('click', function () {
       var hospedajeJSON = JSON.stringify(hospedaje);
       localStorage.setItem = hospedajeJSON;
-      localStorage.guardarHospedaje = hospedajeJSON;
-      console.log(hospedajeJSON);
       abrirModal(hospedaje.id);
     });
   });
@@ -82,21 +80,25 @@ function abrirVentanaReserva() {
 
 ; //una función para tomar los datos de la ubicacion del formulario y que al apretar el boton buscar abra la página
 //guardar los datos del formulario en el localStorage y transformarlos a json y que los tome al apretar buscar 
-//Boton busqueda home 
-// let botonBusquedaHome = $('botonBusquedaHome')
-// botonBusquedaHome.click(function(event){
-// 	event.preventDefault()
-// 	abrirVentanaBusqueda();
-// })
-// function abrirVentanaBusqueda() {
-//     window.open('hospedajes.html','_self', "Hospedajes")
-// };
-//guardar datos en el local de la home 
-// let seleccion = $('inputGroupSelect04');
-// seleccion.change(function(e){
-// 	e.preventDefault();
-// 	let eleccionUbicacion = seleccion.value;
-// 	let eleccionUbicacionJSON = JSON.stringify(eleccionUbicacion);
-// 	localStorage.guardarUbicacion = eleccionUbicacionJSON
-// 	console.log(eleccionUbicacionJSON)
-// })
+// Boton busqueda home 
+
+var botonBusquedaHome = $('botonBusquedaHome');
+botonBusquedaHome.click(function (event) {
+  event.preventDefault();
+  abrirVentanaBusqueda();
+});
+
+function abrirVentanaBusqueda() {
+  window.open('hospedajes.html', '_self', "Hospedajes");
+}
+
+; //guardar datos en el local de la home 
+
+var seleccion = $('inputGroupSelect04');
+seleccion.change(function (e) {
+  e.preventDefault();
+  var eleccionUbicacion = seleccion.value;
+  var eleccionUbicacionJSON = JSON.stringify(eleccionUbicacion);
+  localStorage.guardarUbicacion = eleccionUbicacionJSON;
+  console.log(eleccionUbicacionJSON);
+});
