@@ -1,4 +1,4 @@
-
+/**Hospedajes.html */
 //Contenedor Cards
 const contenedorCards = document.getElementById('contenedorCardPadre');
 
@@ -9,33 +9,33 @@ let mapaMadrid = document.getElementById('mapaMadrid');
 //event en select + filtro
 var select = document.getElementById('inputGroupUbicacion');
 
-select.addEventListener('change', () => {
-	let eleccion = select.value;
-	if (eleccion === '0') {
-		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Barcelona'));
-		mapaBarcelona.innerHTML = '';
-		let divMapaB = document.createElement('div');
-		divMapaB.classList.add('col');
-		divMapaB.innerHTML += `
-		<iframe class="mapa"
-		src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40275.757954828165!2d2.1430467032310685!3d41.38465085872697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelona%2C%20Espa%C3%B1a!5e0!3m2!1ses-419!2sar!4v1603490507379!5m2!1ses-419!2sar"
-		width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-		tabindex="0"></iframe>`;
-		mapaBarcelona.appendChild(divMapaB);
-	} else if (eleccion === '1') {
-		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Madrid'));
-		mapaMadrid.innerHTML = '';
-		let divMapaA = document.createElement('div');
-		divMapaA.classList.add('col');
-		divMapaA.innerHTML += `
-		<iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48601.73362672446!2d-3.731045456806114!3d40.41752625499234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2zTWFkcmlkLCBFc3Bhw7Fh!5e0!3m2!1ses-419!2sar!4v1612917032884!5m2!1ses-419!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`;
-		mapaMadrid.appendChild(divMapaA);
-	} else {
-		console.log('ciudad no disponible');
-	}
+// select.addEventListener('change', () => {
+// 	let eleccion = select.value;
+// 	if (eleccion === '0') {
+// 		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Barcelona'));
+// 		mapaBarcelona.innerHTML = '';
+// 		let divMapaB = document.createElement('div');
+// 		divMapaB.classList.add('col');
+// 		divMapaB.innerHTML += `
+// 		<iframe class="mapa"
+// 		src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40275.757954828165!2d2.1430467032310685!3d41.38465085872697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelona%2C%20Espa%C3%B1a!5e0!3m2!1ses-419!2sar!4v1603490507379!5m2!1ses-419!2sar"
+// 		width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+// 		tabindex="0"></iframe>`;
+// 		mapaBarcelona.appendChild(divMapaB);
+// 	} else if (eleccion === '1') {
+// 		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Madrid'));
+// 		mapaMadrid.innerHTML = '';
+// 		let divMapaA = document.createElement('div');
+// 		divMapaA.classList.add('col');
+// 		divMapaA.innerHTML += `
+// 		<iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48601.73362672446!2d-3.731045456806114!3d40.41752625499234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2zTWFkcmlkLCBFc3Bhw7Fh!5e0!3m2!1ses-419!2sar!4v1612917032884!5m2!1ses-419!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`;
+// 		mapaMadrid.appendChild(divMapaA);
+// 	} else {
+// 		console.log('ciudad no disponible');
+// 	}
 
-	localStorage.pais = eleccion;
-});
+// 	localStorage.pais = eleccion;
+// });
 mostrar(Hospedajes);
 
 //funcion para mostrar hospedajes por ubicación
@@ -200,40 +200,5 @@ function abrirModal(id) {
 function abrirVentanaReserva() {
     window.open('reserva.html','_self', "reserva")
 };
-
-
-
-//una función para tomar los datos de la ubicacion del formulario y que al apretar el boton buscar abra la página
-//guardar los datos del formulario en el localStorage y transformarlos a json y que los tome al apretar buscar 
-
-
-
-
-
-// Boton busqueda home 
- let botonBusquedaHome = $('botonBusquedaHome')
-
- botonBusquedaHome.click(function(event){
- 	event.preventDefault()
- 	abrirVentanaBusqueda();
- })
-
- function abrirVentanaBusqueda() {
-     window.open('hospedajes.html','_self', "Hospedajes")
- };
-
-
-//guardar datos en el local de la home 
-
- let seleccion = $('inputGroupSelect04');
-
- seleccion.change(function(e){
- 	e.preventDefault();
- 	let eleccionUbicacion = seleccion.value;
- 	let eleccionUbicacionJSON = JSON.stringify(eleccionUbicacion);
- 	localStorage.guardarUbicacion = eleccionUbicacionJSON
- 	console.log(eleccionUbicacionJSON)
-
- })
-
+/**FIN Hospedajes.html */
 
