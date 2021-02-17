@@ -447,7 +447,6 @@ h1 {
 .contenido-principal {
   display: flex;
   justify-content: center;
-  margin-top: 6rem;
   text-align: center; }
   .contenido-principal .imagen-encuentra:hover {
     transform: scale(1.1); }
@@ -531,8 +530,8 @@ h1 {
   top: 4rem; }
 
 .mapa {
-  position: fixed;
-  top: 10rem;
+  position: absolute;
+  top: -25rem;
   right: 1rem;
   width: 692px;
   height: 28rem; }
@@ -542,6 +541,10 @@ h1 {
 
 .card-text {
   font-size: 0.75rem; }
+
+.ubicacion {
+  font-size: 1rem;
+  color: #6c5ce7; }
 
 .carousel-size {
   width: 255px; }

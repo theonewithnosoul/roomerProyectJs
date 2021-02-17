@@ -2,40 +2,21 @@
 //Contenedor Cards
 const contenedorCards = document.getElementById('contenedorCardPadre');
 
-//Funcion para mostrar mapa de la ciudad correspondiente
-let mapaBarcelona = document.getElementById('mapaBarcelona');
-let mapaMadrid = document.getElementById('mapaMadrid');
-
 //event en select + filtro
 var select = document.getElementById('inputGroupUbicacion');
 
-// select.addEventListener('change', () => {
-// 	let eleccion = select.value;
-// 	if (eleccion === '0') {
-// 		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Barcelona'));
-// 		mapaBarcelona.innerHTML = '';
-// 		let divMapaB = document.createElement('div');
-// 		divMapaB.classList.add('col');
-// 		divMapaB.innerHTML += `
-// 		<iframe class="mapa"
-// 		src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40275.757954828165!2d2.1430467032310685!3d41.38465085872697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelona%2C%20Espa%C3%B1a!5e0!3m2!1ses-419!2sar!4v1603490507379!5m2!1ses-419!2sar"
-// 		width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-// 		tabindex="0"></iframe>`;
-// 		mapaBarcelona.appendChild(divMapaB);
-// 	} else if (eleccion === '1') {
-// 		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Madrid'));
-// 		mapaMadrid.innerHTML = '';
-// 		let divMapaA = document.createElement('div');
-// 		divMapaA.classList.add('col');
-// 		divMapaA.innerHTML += `
-// 		<iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48601.73362672446!2d-3.731045456806114!3d40.41752625499234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2zTWFkcmlkLCBFc3Bhw7Fh!5e0!3m2!1ses-419!2sar!4v1612917032884!5m2!1ses-419!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`;
-// 		mapaMadrid.appendChild(divMapaA);
-// 	} else {
-// 		console.log('ciudad no disponible');
-// 	}
+select.addEventListener('change', () => {
+	let eleccion = select.value;
+	if (eleccion === '0') {
+		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Barcelona'));
+	} else if (eleccion === '1') {
+		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Madrid'));
+	} else {
+		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Berlin'));
+	}
 
-// 	localStorage.pais = eleccion;
-// });
+	localStorage.pais = eleccion;
+});
 mostrar(Hospedajes);
 
 //funcion para mostrar hospedajes por ubicación
@@ -43,16 +24,16 @@ function mostrar(Hospedajes) {
 	contenedorCards.innerHTML = '';
 	Hospedajes.forEach((hospedaje) => {
 		let div = document.createElement('div');
-		div.classList.add('col-sm-6');
+		div.classList.add('col-sm-3', 'mt-3');
 		div.innerHTML += `
 
             <div class="card">     
             <img class="d-block w-100 carousel-imagen" src=${hospedaje.imagenHabitacion} >                
             <div class="card-body">
                 <h5 class="card-title"> ${hospedaje.titulo}</h5>
-                <p class="card-text"> ${hospedaje.ubicacion} <br>
-                  Habitación  ${hospedaje.habitacion} <br>
-                <p>${hospedaje.precio} € </p>
+                <h5 class="ubicacion"> ${hospedaje.ubicacion}</h5> 
+                <p class="card-text">  Habitación  ${hospedaje.habitacion}</p> 
+                <h5>${hospedaje.precio} € </p>
                 </p>
                 <button type="button" id="boton-ver-mas${hospedaje.id}"
                     class="btn btn-outline-success btn-primary boton-modal  texto-color"
@@ -73,8 +54,6 @@ function mostrar(Hospedajes) {
 		});
 	});
 }
-
-
 
 //Const para modal
 const contenedorModal = document.getElementById('contenedorModal');
@@ -183,22 +162,29 @@ function abrirModal(id) {
 		</div>
 	</div>
 	<div class="boton-reservar">
-		<button type="button" id="boton-reservar"
+		<button type="button" id="boton-reservar${agregarHospedaje.id}"
 			class="btn btn-outline-success btn-primary boton-modal  texto-color "><a
 				class="boton-reserva">Reservar</a></button>
 	</div>
 `;
 	contenedorModal.appendChild(divModal);
 
-	let botonReservar = document.getElementById(`boton-reservar`);
+	let botonReservar = document.getElementById(`boton-reservar${agregarHospedaje.id}`);
 
+	
 	botonReservar.addEventListener('click', () => {
-		abrirVentanaReserva();
-	});
+        var hospedajeCompletoJSON = JSON.stringify(agregarHospedaje);
+        sessionStorage.setItem('hospedaje', hospedajeCompletoJSON)
+        abrirVentanaReserva(agregarHospedaje.id);
+    });
+
+	//  botonReservar.addEventListener('click', () => {
+	//  	abrirVentanaReserva();
+	//  });
 }
 // agregarHospedaje.id ${agregarHospedaje.id}
 function abrirVentanaReserva() {
-    window.open('reserva.html','_self', "reserva")
-};
+	window.open('reserva.html', '_self', 'reserva');
+}
 /**FIN Hospedajes.html */
 

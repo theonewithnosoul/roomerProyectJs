@@ -127,7 +127,7 @@ h1 {
 
 .contenido-principal {
   @include flexbox-center;
-  margin-top: $margin-top-dos;
+  
   @include text-align-center;
   .imagen-encuentra {
     &:hover {
@@ -232,17 +232,22 @@ h1 {
 }
 
 .mapa {
-  position: fixed;
-  top: 10rem;
+  position: absolute;
+  top: -25rem;
   right: 1rem;
   width: 692px;
   height: 28rem;
 }
+
 .card-title {
   font-size: $h5-font-size;
 }
 .card-text {
   font-size: $Card-text-font-size;
+}
+.ubicacion{
+  font-size: 1rem;
+  color: $color-principal;
 }
 .carousel-size {
   width: 255px;
