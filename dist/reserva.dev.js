@@ -19,8 +19,16 @@ function getHospedajeSessionStorage() {
 var hospedajeBla = getHospedajeSessionStorage();
 console.log(hospedajeBla);
 /**Función para crear el hospedaje en reserva Jquery */
-// function crearHospedajeEnReserva() {
-// 	$('#datosDeReserva').append(`
+
+function crearHospedajeEnReserva(hospedajeBla) {
+  $('#datosDeReserva').append("\n     <div class=\"subtitulo-reserva\">\n \t\t<h2>Datos de la reserva</h2>\n     </div>\n     <div  class=\"texto-imagen__reserva\">\n \t    <div>\n \t\t<p>Habitaci\xF3n amueblada, luminosa en <br>\n \t\t\tdepartamento compartido</p>\n \t\t <p>".concat(hospedajeBla.ubicacion, "  </p>\n \t    </div>\n \t    <div>\n \t\t     <img class=\"imagen-reserva\" src=\" \" alt=\"bedroom\">\n \t    </div> \n     </div>\n         <hr>\n     <div class=\"row texto-reserva\">\n \t    <div>\n \t\t    <h5>Disponible desde:</h5>\n \t    </div>\n \t    <div>\n \t\t    <h5>Estancia minima</h5>\n \t    </div> \n     </div>\n         <hr>\n     <div class=\"row texto-reserva\">\n     \t<h4> Resumen de la reserva</h4>\n     </div>\n     <div class=\"row texto-reserva\">\n \t    <div>\n \t\t    <p>Precio mensual:\n \t\t\t    <br>\n \t\t\t    servicios incluidos\n \t\t    </p>\n \t    </div>\n \t    <div>\n \t    \t<p> \u20AC</p>\n \t    </div>\n     </div>\n     <div class=\"row texto-reserva\">\n         <div>\n             <p>Duraci\xF3n de la estancia</p>\n         </div>\n         <div>\n             <p> meses</p>\n         </div>\n     </div>\n     <div class=\"row texto-reserva\">\n         <div>\n             <p>Dep\xF3sito</p>\n         </div>\n     </div>\n     <div class=\"row texto-reserva\">\n         <div>\n             <p>Importe total</p>\n         </div>\n     </div>\n     <div class=\"row texto-reserva\">\n         <div>\n             <p>Pago a trav\xE9s de roomer</p>\n         </div>\n         <div>\n             <p> \u20AC</p>\n         </div>\n     </div>\n     <div class=\"row texto-reserva\">\n         <div>\n             <p>Tarifa de servicio</p>\n         </div>\n\n         <div>\n             <p> \u20AC</p>\n         </div>\n     </div>\n     <hr>\n     <div class=\"row texto-reserva\">\n         <div>\n             <p>Total a pagar</p>\n         </div>\n         <div>\n             <p> \u20AC</p>\n         </div>\n     </div>\n     </div>\n     <div class=\"row boton-continuar\">\n     <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\"\n         data-target=\"#modalReserva\">Continuar</button>\n     "));
+}
+
+crearHospedajeEnReserva(hospedajeBla); //var templateReserva = document.getElementById('datosDeReserva');
+// function crearHospedajeEnReserva(hospedajeBla) {
+//     templateReserva.innerText = '';
+//      let div = document.createElement('div');
+// 	 div.innerHTML += `
 //     <div class="subtitulo-reserva">
 // 		<h2>Datos de la reserva</h2>
 //     </div>
@@ -28,11 +36,11 @@ console.log(hospedajeBla);
 // 	    <div>
 // 		<p>Habitación amueblada, luminosa en <br>
 // 			departamento compartido</p>
-// 		 <p>  </p>
+// 		 <p> ${hospedajeBla.ubicacion} </p>
 // 	    </div>
 // 	    <div>
 // 		    // <img class="imagen-reserva" src=" " alt="bedroom">
-// 	    </div> 
+// 	    </div>
 //     </div>
 //         <hr>
 //     <div class="row texto-reserva">
@@ -41,7 +49,7 @@ console.log(hospedajeBla);
 // 	    </div>
 // 	    <div>
 // 		    <h5>Estancia minima</h5>
-// 	    </div> 
+// 	    </div>
 //     </div>
 //         <hr>
 //     <div class="row texto-reserva">
@@ -105,17 +113,7 @@ console.log(hospedajeBla);
 //     <div class="row boton-continuar">
 //     <button type="button" class="btn btn-primary" data-toggle="modal"
 //         data-target="#modalReserva">Continuar</button>
-//     `);
+//     `;
+//     templateReserva.appendChild(div)
 // }
-// crearHospedajeEnReserva();
-
-var templateReserva = document.getElementById('datosDeReserva');
-
-function crearHospedajeEnReserva(hospedajeBla) {
-  templateReserva.innerText = '';
-  var div = document.createElement('div');
-  div.innerHTML += "\n\t\n    <div class=\"subtitulo-reserva\">\n\t\t<h2>Datos de la reserva</h2>\n    </div>\n    <div  class=\"texto-imagen__reserva\">\n\t    <div>\n\t\t<p>Habitaci\xF3n amueblada, luminosa en <br>\n\t\t\tdepartamento compartido</p>\n\t\t <p> ".concat(hospedajeBla.ubicacion, " </p>\n\t    </div>\n\t    <div>\n\t\t    // <img class=\"imagen-reserva\" src=\" \" alt=\"bedroom\">\n\t    </div> \n    </div>\n        <hr>\n    <div class=\"row texto-reserva\">\n\t    <div>\n\t\t    <h5>Disponible desde:</h5>\n\t    </div>\n\t    <div>\n\t\t    <h5>Estancia minima</h5>\n\t    </div> \n    </div>\n        <hr>\n    <div class=\"row texto-reserva\">\n    \t<h4> Resumen de la reserva</h4>\n    </div>\n    <div class=\"row texto-reserva\">\n\t    <div>\n\t\t    <p>Precio mensual:\n\t\t\t    <br>\n\t\t\t    servicios incluidos\n\t\t    </p>\n\t    </div>\n\t    <div>\n\t    \t<p> \u20AC</p>\n\t    </div>\n    </div>\n    <div class=\"row texto-reserva\">\n        <div>\n            <p>Duraci\xF3n de la estancia</p>\n        </div>\n        <div>\n            <p> meses</p>\n        </div>\n    </div>\n    <div class=\"row texto-reserva\">\n        <div>\n            <p>Dep\xF3sito</p>\n        </div>\n    </div>\n    <div class=\"row texto-reserva\">\n        <div>\n            <p>Importe total</p>\n        </div>\n    </div>\n    <div class=\"row texto-reserva\">\n        <div>\n            <p>Pago a trav\xE9s de roomer</p>\n        </div>\n        <div>\n            <p> \u20AC</p>\n        </div>\n    </div>\n    <div class=\"row texto-reserva\">\n        <div>\n            <p>Tarifa de servicio</p>\n        </div>\n\n        <div>\n            <p> \u20AC</p>\n        </div>\n    </div>\n    <hr>\n    <div class=\"row texto-reserva\">\n        <div>\n            <p>Total a pagar</p>\n        </div>\n        <div>\n            <p> \u20AC</p>\n        </div>\n    </div>\n    </div>\n    <div class=\"row boton-continuar\">\n    <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\"\n        data-target=\"#modalReserva\">Continuar</button>\n    ");
-  templateReserva.appendChild(div);
-}
-
-crearHospedajeEnReserva();
+// crearHospedajeEnReserva(hospedajeBla);
