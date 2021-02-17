@@ -21,8 +21,6 @@ select.addEventListener('change', function () {
       return el.ubicacion == 'Berlin';
     }));
   }
-
-  localStorage.pais = eleccion;
 });
 mostrar(Hospedajes); //funcion para mostrar hospedajes por ubicación
 

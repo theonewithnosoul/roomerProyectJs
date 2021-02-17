@@ -19,6 +19,16 @@ var hospedajeBla = getHospedajeSessionStorage();
 console.log(hospedajeBla);
 
 
+/**Obtener fecha del date picker*/
+ let date = document.getElementById('start')
+
+ date.onchange = function(){
+     let electedDate = this.value
+     console.log (electedDate)
+    return electedDate
+ }
+
+let getDate = date.onchange()
 
 
 /**Función para sumar importe total */
@@ -39,7 +49,7 @@ console.log (Total())
 
 /**Función para crear el hospedaje en reserva Jquery */
 
-function crearHospedajeEnReserva(hospedajeBla) {
+function crearHospedajeEnReserva(hospedajeBla, electedDate) {
 	$('#datosDeReserva').append(`
      <div class="subtitulo-reserva">
  		<h2>Datos de la reserva</h2>
@@ -57,7 +67,7 @@ function crearHospedajeEnReserva(hospedajeBla) {
          <hr>
      <div class="row texto-reserva">
  	    <div>
- 		    <h5>Disponible desde:</h5>
+ 		    <h5>Fecha de ingreso ${getDate}</h5>
  	    </div>
  	    <div>
  		    <h5>Estancia minima</h5>
@@ -120,7 +130,6 @@ function crearHospedajeEnReserva(hospedajeBla) {
          data-target="#modalReserva">Continuar</button>
      `);
 }
-crearHospedajeEnReserva(hospedajeBla);
-
+crearHospedajeEnReserva(hospedajeBla, getDate);
 
 
