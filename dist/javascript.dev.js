@@ -43,6 +43,7 @@ function mostrar(Hospedajes) {
       agregarAFavs(hospedaje.id);
       $("#agregadoA".concat(hospedaje.id)).toggle();
       e.preventDefault();
+      console.log(favoritos);
     });
     /**Boton para abrir el modal: ver más */
 

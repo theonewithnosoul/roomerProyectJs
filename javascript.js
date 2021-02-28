@@ -60,7 +60,7 @@ function mostrar(Hospedajes) {
 			agregarAFavs(hospedaje.id);
 			$(`#agregadoA${hospedaje.id}`).toggle();
 			e.preventDefault();
-		
+			console.log(favoritos)
 		});
 		
 		/**Boton para abrir el modal: ver más */
