@@ -29,10 +29,6 @@ function Hospedaje(
 	this.calefaccion = calefaccion;
 	this.aireAcondicionado = aireAcondicionado;
 	this.precio = precio;
-	this.disponibilidad = new Object();
-	this.disponibilidad.dia = dia;
-	this.disponibilidad.mes = mes;
-	this.disponibilidad.anio = anio;
 	this.imagenHabitacion = imagenHabitacion;
 	this.imagenCocina = imagenCocina;
 	this.imagenBanio = imagenBanio;
@@ -112,7 +108,7 @@ let Hospedajes = [
 		28,
 		'Febrero',
 		2021,
-		'./IMAGES/bedroom8.png',
+		'./IMAGES/bedroom5.png',
 		'./IMAGES/bathroom4.jpg',
 		'./IMAGES/kitchen4.jpg'
 	)),
@@ -135,6 +131,44 @@ let Hospedajes = [
 		'./IMAGES/bathroom5.jpg',
 		'./IMAGES/kitchen5.jpg'
 	)),
+	(hospedaje7 = new Hospedaje(
+		7,
+		'Habitación para estudiante cerca de la Universidad',
+		'Individual',
+		'Baño Privado',
+		'Amoblado',
+		'Doble',
+		2,
+		'Berlín',
+		'Tiene',
+		'Tiene',
+		350,
+		15,
+		'Febrero',
+		2021,
+		'./IMAGES/bedroom7.png',
+		'./IMAGES/bathroom7.jpg',
+		'./IMAGES/kitchen7.jpg'
+	)),
+	(hospedaje8 = new Hospedaje(
+		8,
+		'Habitación para pareja en el centro',
+		'Individual',
+		'Baño Privado',
+		'Amoblado',
+		'Doble',
+		2,
+		'Berlín',
+		'Tiene',
+		'Tiene',
+		480,
+		15,
+		'Febrero',
+		2021,
+		'./IMAGES/bedroom.jpg',
+		'./IMAGES/bathroom8.jpg',
+		'./IMAGES/kitchen8.jpg'
+	))
 ];
 
 Hospedajes.push(

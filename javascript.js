@@ -1,25 +1,28 @@
-/**Hospedajes.html */
 //Contenedor Cards
 const contenedorCards = document.getElementById('contenedorCardPadre');
 
 //event en select + filtro
 var select = document.getElementById('inputGroupUbicacion');
+var botonBuscar = document.getElementById('botonBusquedaHome');
 
-select.addEventListener('change', () => {
+botonBuscar.addEventListener('click', () => {
 	let eleccion = select.value;
 	if (eleccion === '0') {
 		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Barcelona'));
 	} else if (eleccion === '1') {
 		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Madrid'));
-	} else {
-		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Berlin'));
+	} else if (eleccion === '2') {
+		mostrar(Hospedajes.filter((el) => el.ubicacion == 'Berlín'));
 	}
-
-	
+	$('html, body').animate(
+		{
+			scrollTop: $('#scroll').offset().top,
+		},
+		2000
+	);
 });
 
-mostrar(Hospedajes);
-
+let deleted = []
 //funcion para mostrar hospedajes por ubicación
 function mostrar(Hospedajes) {
 	contenedorCards.innerHTML = '';
@@ -27,15 +30,19 @@ function mostrar(Hospedajes) {
 		let div = document.createElement('div');
 		div.classList.add('col-sm-3', 'mt-3');
 		div.innerHTML += `
-
-            <div class="card">     
+            <div id="scroll" class="card card-shadow">     
             <img class="d-block w-100 carousel-imagen" src=${hospedaje.imagenHabitacion} >                
-            <div class="card-body">
+            <div id="agregado" class="card-body">
                 <h5 class="card-title"> ${hospedaje.titulo}</h5>
                 <h5 class="ubicacion"> ${hospedaje.ubicacion}</h5> 
                 <p class="card-text">  Habitación  ${hospedaje.habitacion}</p> 
-                <h5>${hospedaje.precio} € </p>
-                </p>
+                <h5>${hospedaje.precio} € </h5>
+		
+				<p class="oculto" id="agregadoA${hospedaje.id}">agregado</p>
+				<button id="botonFav${hospedaje.id}" type="button" class="btn btn-outline-danger  heart-button"><svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+				<path d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+			  </svg></button>
+			  
                 <button type="button" id="boton-ver-mas${hospedaje.id}"
                     class="btn btn-outline-success btn-primary boton-modal  texto-color"
                     data-toggle="modal" data-target="#my-modal">Ver más</button>
@@ -45,23 +52,33 @@ function mostrar(Hospedajes) {
 		`;
 		contenedorCards.appendChild(div);
 
+		/** evento para agregar a favoritos */
+		let agregarFav = document.getElementById(`botonFav${hospedaje.id}`);
+
+		agregarFav.addEventListener('click', (e) => {
+			$('#cartelVacio').hide();
+			agregarAFavs(hospedaje.id);
+			$(`#agregadoA${hospedaje.id}`).toggle();
+			e.preventDefault();
+		
+		});
+		
+		/**Boton para abrir el modal: ver más */
 		let boton = document.getElementById(`boton-ver-mas${hospedaje.id}`);
 
 		boton.addEventListener('click', () => {
-			var hospedajeJSON = JSON.stringify(hospedaje);
-			localStorage.setItem = hospedajeJSON;
-
 			abrirModal(hospedaje.id);
 		});
 	});
 }
 
-//Const para modal
+//Contenedor para modal
 const contenedorModal = document.getElementById('contenedorModal');
 
 // Funcion para abrir modal
 let verModal = [];
 
+//Carga de hospedaje al modal
 function abrirModal(id) {
 	contenedorModal.innerHTML = '';
 
@@ -118,12 +135,11 @@ function abrirModal(id) {
 				<p>Calefacción: ${agregarHospedaje.calefaccion}</p>
 				<p>Aire Acondicionado: ${agregarHospedaje.aireAcondicionado}</p>
 				<p>Precio: ${agregarHospedaje.precio} € por mes </p>
-				<p>Disponibilidad desde el <br> ${agregarHospedaje.disponibilidad}</p>
 
 			</div>
 
 			<div class="col-4">
-				<h4 class="titulo-modal">Comodidades</h4>
+				<h4 class="titulo-modal ml-5">Comodidades</h4>
 				<ul>
 
 					<div class="col">
@@ -170,22 +186,31 @@ function abrirModal(id) {
 `;
 	contenedorModal.appendChild(divModal);
 
+	/**Reservar */
+
 	let botonReservar = document.getElementById(`boton-reservar${agregarHospedaje.id}`);
 
-	
 	botonReservar.addEventListener('click', () => {
-        var hospedajeCompletoJSON = JSON.stringify(agregarHospedaje);
-        sessionStorage.setItem('hospedaje', hospedajeCompletoJSON)
-        abrirVentanaReserva(agregarHospedaje.id);
-    });
-
-	//  botonReservar.addEventListener('click', () => {
-	//  	abrirVentanaReserva();
-	//  });
+		var hospedajeCompletoJSON = JSON.stringify(agregarHospedaje);
+		sessionStorage.setItem('hospedaje', hospedajeCompletoJSON);
+		abrirVentanaReserva(agregarHospedaje.id);
+	});
 }
-// agregarHospedaje.id ${agregarHospedaje.id}
+/**Redirección a reserva.html */
 function abrirVentanaReserva() {
 	window.open('reserva.html', '_self', 'reserva');
 }
-/**FIN Hospedajes.html */
 
+/**Obtener fecha del date picker*/
+let date = document.getElementById('start');
+
+/**Guardar la fecha en el storage para enviar a reserva */
+date.onchange = function () {
+	let electedDate = this.value;
+	var electedDateJson = JSON.stringify(electedDate);
+	sessionStorage.setItem('fecha', electedDateJson);
+	console.log(electedDate);
+	return electedDate;
+};
+
+let getDate = date.onchange();

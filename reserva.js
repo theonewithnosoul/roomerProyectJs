@@ -9,56 +9,49 @@ function getHospedajeSessionStorage() {
 	if (hospedajeEnSessionStorage) {
 		const objetosEnElSessionStorage = JSON.parse(hospedajeEnSessionStorage);
 
-		// reserva.push(objetosEnElSessionStorage);
 		return objetosEnElSessionStorage;
 	}
 }
 
-
 var hospedajeBla = getHospedajeSessionStorage();
-console.log(hospedajeBla);
 
 
-/**Obtener fecha del date picker*/
- let date = document.getElementById('start')
+/** Obtener fecha el sessionStorage */
+function getDate() {
+	const dateInStorage = sessionStorage.getItem('fecha');
+	if (dateInStorage) {
+		const dateOutOfStorage = JSON.parse(dateInStorage);
+		return dateOutOfStorage;
+	}
+}
 
- date.onchange = function(){
-     let electedDate = this.value
-     console.log (electedDate)
-    return electedDate
- }
-
-let getDate = date.onchange()
+var entranceDate = getDate();
+console.log(entranceDate);
 
 
 /**Función para sumar importe total */
-
 let precioHabitacion = hospedajeBla.precio;
 let precioDeposito = hospedajeBla.precio;
-
 let importeTotal;
 
 function Total() {
 	let importeTotal = precioHabitacion + precioDeposito;
 	return importeTotal;
 }
-Total()
-console.log (Total())
-
+Total();
+console.log(Total());
 
 
 /**Función para crear el hospedaje en reserva Jquery */
-
-function crearHospedajeEnReserva(hospedajeBla, electedDate) {
+function crearHospedajeEnReserva(hospedajeBla, entranceDate) {
 	$('#datosDeReserva').append(`
      <div class="subtitulo-reserva">
  		<h2>Datos de la reserva</h2>
      </div>
      <div  class="texto-imagen__reserva">
  	    <div>
- 		<p>Habitación amueblada, luminosa en <br>
- 			departamento compartido</p>
- 		 <p>${hospedajeBla.ubicacion}  </p>
+ 		<h4 class= "titulo-hospedaje">${hospedajeBla.titulo}</h4>
+ 		 <h5 class= "ubicacion mt-4">${hospedajeBla.ubicacion}</h5>
  	    </div>
  	    <div>
  		     <img class="imagen-reserva" src="${hospedajeBla.imagenHabitacion} " alt="bedroom">
@@ -67,15 +60,15 @@ function crearHospedajeEnReserva(hospedajeBla, electedDate) {
          <hr>
      <div class="row texto-reserva">
  	    <div>
- 		    <h5>Fecha de ingreso ${getDate}</h5>
+ 		     <h5>Fecha de ingreso: </h5>
  	    </div>
  	    <div>
- 		    <h5>Estancia minima</h5>
+ 		    <h5>${entranceDate} </h5>
  	    </div> 
      </div>
          <hr>
      <div class="row texto-reserva">
-     	<h4> Resumen de la reserva</h4>
+     	<h4 class= "resumen"> Resumen de la reserva</h4>
      </div>
      <div class="row texto-reserva">
  	    <div>
@@ -96,14 +89,6 @@ function crearHospedajeEnReserva(hospedajeBla, electedDate) {
          <div>
  	    	<p> ${hospedajeBla.precio} €</p>
  	    </div>
-     </div>
-      <div class="row texto-reserva">
-         <div>
-             <p>Duración de la estancia</p>
-         </div>
-         <div>
-             <p> 3 meses</p>
-         </div>
      </div>
      <div class="row texto-reserva">
          <div>
@@ -130,6 +115,21 @@ function crearHospedajeEnReserva(hospedajeBla, electedDate) {
          data-target="#modalReserva">Continuar</button>
      `);
 }
-crearHospedajeEnReserva(hospedajeBla, getDate);
+crearHospedajeEnReserva(hospedajeBla, entranceDate);
 
+/**Obtener datos personales del modal de reserva */
+const botonData = $('#botonData');
 
+botonData.click(function () {
+	var nombre = $('#name').val();
+	var email = $('#email').val();
+	var datos = {
+		nombre: nombre,
+		email: email,
+	};
+
+	var datosJSON = JSON.stringify(datos);
+	sessionStorage.setItem('data', datosJSON);
+	console.log(datos);
+	return datos;
+});

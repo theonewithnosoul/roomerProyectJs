@@ -284,7 +284,7 @@ li {
   margin-top: 2rem; }
 
 .imagen-reserva {
-  width: 10rem;
+  width: 17rem;
   margin-left: 1rem;
   margin-top: -7px; }
 
@@ -300,7 +300,7 @@ li {
   margin-top: 2rem; }
 
 .boton-continuar {
-  margin-left: 28rem;
+  justify-content: center;
   margin-top: 4rem; }
 
 .volver-arriba {
@@ -321,6 +321,21 @@ li {
 
 .texto-color {
   color: white !important; }
+
+.contenedor-reserva {
+  margin: 0 auto; }
+
+.ubicacion {
+  color: #968bea; }
+
+.titulo-hospedaje {
+  color: #6c5ce7; }
+
+.resumen {
+  color: #f6b60e; }
+
+.imagen-reservada {
+  width: 22rem; }
 
 /**checkout form**/
 .rounded {
@@ -516,7 +531,11 @@ h1 {
 
 /**hospedaje.html**/
 .carousel-imagen {
-  width: 255px !important; }
+  width: 255px !important;
+  border-radius: 0px 32px 0px 0px !important; }
+
+.imagen-fav {
+  width: 242px; }
 
 .row-2 {
   width: 52%;
@@ -630,6 +649,37 @@ label {
 
 .container-tres {
   top: 4rem; }
+
+.card-shadow {
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0px 4px 4px rgba(50, 50, 71, 0.08));
+  border-radius: 0px 32px; }
+
+.heart-button {
+  position: relative;
+  bottom: 0.5rem;
+  left: 10rem; }
+
+.heart-button:focus-within {
+  color: black !important; }
+
+.heart-button-position {
+  position: relative;
+  top: 6.40rem;
+  left: 10.5rem; }
+
+.corazon {
+  text-align: center; }
+
+.btn-eliminar {
+  position: relative;
+  left: 17rem; }
+
+.oculto {
+  display: none; }
+
+.color-link {
+  color: #ffffff; }
 
 /* Fallback for Edge
 -------------------------------------------------- */
