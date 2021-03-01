@@ -28,37 +28,6 @@ function emptyReservation(personalData) {
         </div>
      </main> 
         `);
-	console.log('#personalData');
+	
 }
 emptyReservation(personalData);
-
-/**Buscador */
-const searchButton = $('#search-button');
-const searchInput = $('#search-input');
-searchButton.click(function () {
-	const inputValue = searchInput.value;
-	$.get(
-		'https://www.boredapi.com/api/activity',	
-        	function buscar(data, status) {
-            console.log(data)
-            return data
-        }
-	);
-});
-
-/**Agregar Api */
-
-const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://community-open-weather-map.p.rapidapi.com/weather?q=London%2Cuk&lat=0&lon=0&callback=test&id=2172797&lang=null&units=%22metric%22%20or%20%22imperial%22&mode=xml%2C%20html",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "264a91e5c7mshf3f35ab357b7eb7p12debajsn49617797b409",
-		"x-rapidapi-host": "community-open-weather-map.p.rapidapi.com"
-	}
-};
-
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});

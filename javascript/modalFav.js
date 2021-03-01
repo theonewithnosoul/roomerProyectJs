@@ -9,10 +9,21 @@ const favoritosEnCarrito = '#favoritosEnCarrito';
 
 /**Función para cargar en el carrito */
 function agregarAFavs(id) {
-  
-	let agregarHospedajeAfav = Hospedajes.filter((el) => el.id == id)[0];
-	favoritos.push(agregarHospedajeAfav);
+    let agregarHospedajeAfav = Hospedajes.filter((el) => el.id == id)[0];
 
+    var listaFav = favoritos.findIndex(function (e) {
+        return e.id == agregarHospedajeAfav.id;
+        
+    })
+    if (listaFav > -1){
+       
+        favoritos.splice(listaFav, 1)
+        
+    }else{
+        
+        favoritos.push(agregarHospedajeAfav)
+    }
+	
 	contenedorFavoritos.append(`
     <div class=" mb-3" style="width: 35rem;">
         <div class="container fade-out">
@@ -42,14 +53,17 @@ function agregarAFavs(id) {
 	/**Eliminar hospedaje de fav */
 	let botonEliminar = document.getElementById(`eliminar${agregarHospedajeAfav.id}`);
 
+    
 	botonEliminar.addEventListener('click', () => {
-        contenedorFavoritos.innerHTML = '';
+       
 		botonEliminar.parentElement.remove();
-		favoritos = favoritos.filter((el) => el.id != agregarHospedajeAfav.id);
-        if (favoritos.length == 0) {
+	    favoritos = favoritos.filter((el) => el.id != agregarHospedajeAfav.id);
+        if (favoritos.length === 0) {
+            contenedorFavoritos.innerHTML = '';
             $('#cartelVacio').show()
         }
        
+
 	});
 
 }

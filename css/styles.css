@@ -676,7 +676,9 @@ label {
   left: 17rem; }
 
 .oculto {
-  display: none; }
+  display: none;
+  position: relative;
+  top: 2rem; }
 
 .color-link {
   color: #ffffff; }
